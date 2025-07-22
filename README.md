@@ -88,5 +88,6 @@ src/
     └── VerticalThrow.java
 ## ✍️ Author
 Sakiba Belal
-Dept. of Information and Communication Technology (IIT)
+Institute of Information  Technology (IIT)
+Software Engineering
 Noakhali Science and Technology University (NSTU)
