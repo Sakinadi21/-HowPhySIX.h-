@@ -1,4 +1,4 @@
-# 🎓 HowPhySIX.h - Special Practice Simulations (`splprac/`)
+# 🎓 HowPhySIX.h 
 
 Welcome to the **Special Practice** section of the `HowPhySIX.h` project — a physics simulation toolkit designed especially for **HSC 1st Paper** students. This folder (`splprac/`) contains various Java-based simulations created using **Swing GUI**, allowing students and educators to visualize and interact with physics concepts in real-time.
 
@@ -64,10 +64,6 @@ Right-click → Run as Java Application.
 
 That’s it! You’ll see a visual simulation window with controls.
 
-## 🖼️ Example Preview
-(Add a screenshot or GIF here if available)
-"Interactive Collision between Two Cars"
-"Projectile path of a launched ball"
 
 ## 🧰 Technologies Used
 Java
