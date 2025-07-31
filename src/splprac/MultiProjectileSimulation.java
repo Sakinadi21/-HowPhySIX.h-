@@ -10,7 +10,7 @@ import javax.sound.sampled.*;
 
 public class MultiProjectileSimulation extends JPanel implements ActionListener {
 
-    private static final double g = 9.8; // gravity m/s^2
+    private static final double g = 9.8; 
     private static final int GROUND_Y = 500;
     private static final int BALL_SIZE = 20;
     private static final int START_X = 150;
@@ -26,7 +26,6 @@ public class MultiProjectileSimulation extends JPanel implements ActionListener 
     private Image boyImage;
     private Image footballImage;
 
-    // A class to store each projectile's state
     private static class Projectile {
         double velocity;
         double angleRad;
@@ -48,7 +47,6 @@ public class MultiProjectileSimulation extends JPanel implements ActionListener 
             throw new IllegalArgumentException("Velocities and angles lists must have the same size");
         }
 
-        // Initialize each projectile
         for (int i = 0; i < velocities.size(); i++) {
             projectiles.add(new Projectile(velocities.get(i), angles.get(i)));
         }
@@ -63,30 +61,23 @@ public class MultiProjectileSimulation extends JPanel implements ActionListener 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // Background and ground
+
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(Color.GREEN);
         g.fillRect(0, GROUND_LEVEL, getWidth(), getHeight() - GROUND_LEVEL);
 
-        // Draw boy image
         g.drawImage(boyImage, BOY_X - 50, GROUND_LEVEL - 100, 100, 100, this);
-
-        // Colors for projectiles (extend if needed)
         Color[] colors = {Color.RED, Color.BLUE, Color.MAGENTA, Color.ORANGE, Color.CYAN, Color.PINK, Color.BLACK};
 
-        // Draw each projectile's path and ball
         for (int i = 0; i < projectiles.size(); i++) {
             Projectile p = projectiles.get(i);
             Color c = colors[i % colors.length];
             g.setColor(c);
-
-            // Draw path points
             for (Point pt : p.path) {
                 g.fillOval(pt.x, pt.y, 5, 5);
             }
 
-            // Draw projectile ball
             g.drawImage(footballImage, (int) p.x - BALL_SIZE / 2, (int) p.y - BALL_SIZE / 2, BALL_SIZE, BALL_SIZE, this);
         }
     }
@@ -122,7 +113,6 @@ public class MultiProjectileSimulation extends JPanel implements ActionListener 
             p.path.add(new Point((int) p.x, (int) p.y));
         }
 
-        // Stop animation when all projectiles have landed
         if (allLanded) {
             stopped = true;
         }
