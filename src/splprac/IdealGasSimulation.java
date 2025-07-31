@@ -18,8 +18,8 @@ public class IdealGasSimulation extends JPanel implements ActionListener {
     private Particle[] particles;
     private Image particleImage;
 
-    private int wallCollisions = 0;  // for pressure
-    private double totalSpeedSquared = 0; // for temperature
+    private int wallCollisions = 0;  
+    private double totalSpeedSquared = 0; 
     private boolean soundPlayed=false;
 
     public IdealGasSimulation(int numParticles, int speed) {
@@ -36,7 +36,7 @@ public class IdealGasSimulation extends JPanel implements ActionListener {
             particles[i] = new Particle(x, y, dx, dy);
         }
 
-        timer = new Timer(20, this); // 50 FPS
+        timer = new Timer(20, this); 
         timer.start();
     }
 
@@ -44,20 +44,19 @@ public class IdealGasSimulation extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Background
+        
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, PANEL_WIDTH, PANEL_HEIGHT);
 
-        // Border (container walls)
+    
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, PANEL_WIDTH - 1, PANEL_HEIGHT - 1);
 
-        // Draw particles
         for (Particle p : particles) {
             g.drawImage(particleImage, p.x, p.y, PARTICLE_SIZE, PARTICLE_SIZE, this);
         }
 
-        // Display temperature and pressure
+      
         g.setColor(Color.BLUE);
         g.setFont(new Font("Arial", Font.BOLD, 16));
         g.drawString("Temperature: " + String.format("%.2f", calculateTemperature()), 20, 30);
@@ -77,10 +76,10 @@ public class IdealGasSimulation extends JPanel implements ActionListener {
             p.x += p.dx;
             p.y += p.dy;
 
-            // Add to total kinetic energy
+
             totalSpeedSquared += p.dx * p.dx + p.dy * p.dy;
 
-            // Bounce off walls & count collisions
+     
             if (p.x <= 0 || p.x >= PANEL_WIDTH - PARTICLE_SIZE) {
                 p.dx *= -1;
                 wallCollisions++;
