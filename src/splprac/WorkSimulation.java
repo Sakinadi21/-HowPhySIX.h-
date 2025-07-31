@@ -37,20 +37,17 @@ public class WorkSimulation extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Background
+    
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        // Ground
         g.setColor(Color.GREEN);
         g.fillRect(0, groundLevel, getWidth(), getHeight() - groundLevel);
 
-        // Work Done Text
         g.setColor(Color.BLACK);
         g.setFont(new Font("Kalpurush", Font.BOLD, 24));
         g.drawString("Work Done (W = mgh) = " + String.format("%.2f", workDone) + " J", 50, 50);
 
-        // Drawing the lifting box
         g.drawImage(boxImage, 300, boxY, 80, 80, this);
     }
 
@@ -93,7 +90,7 @@ public class WorkSimulation extends JPanel implements ActionListener {
             String heightInput = JOptionPane.showInputDialog("Enter height (m): ");
             double height = Double.parseDouble(heightInput);
 
-            double gravity = 9.8; // Constant gravitational acceleration
+            double gravity = 9.8; 
 
             JFrame frame = new JFrame("Work Done Simulation");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
