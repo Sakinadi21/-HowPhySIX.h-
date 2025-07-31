@@ -27,7 +27,7 @@ public class NewtonianMechanicsSimulator extends JPanel implements ActionListene
 
     public NewtonianMechanicsSimulator(int goatSpeed, double force, int reactionX) {
         this.goatSpeed = goatSpeed;
-        this.manAcceleration = force / 10.0;  // Assume mass = 10kg
+        this.manAcceleration = force / 10.0; 
         this.reactionTriggerX = reactionX;
 
         goatImage = new ImageIcon(getClass().getResource("/splprac/goat.png")).getImage();
@@ -43,14 +43,13 @@ public class NewtonianMechanicsSimulator extends JPanel implements ActionListene
         super.paintComponent(g);
         g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
 
-        // Labels
+ 
         g.setFont(new Font("Kalpurush", Font.BOLD, 20));
         g.setColor(Color.RED);
         g.drawString("Newton's 1st Law: Goat walks at constant speed", 30, 30);
         g.drawString("Newton's 2nd Law: Man rushes with F = ma", 30, 50);
         g.drawString("Newton's 3rd Law: Goat kicks back!", 30, 70);
 
-        // Characters
         g.drawImage(goatImage, goatX, goatY, 100, 100, this);
         g.drawImage(manImage, manX, manY, 100, 100, this);
 
@@ -61,36 +60,29 @@ public class NewtonianMechanicsSimulator extends JPanel implements ActionListene
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        // 1st Law: Goat walks until it kicks
+    
         if (!reacted) {
             goatX += goatSpeed;
             if (goatX > getWidth()) goatX = -100;
         }
-
-        // 2nd Law: Man moves left with acceleration
         if (!collided) {
             manVelocity += manAcceleration;
             manX -= (int) manVelocity;
         }
 
-        // Collision check
         if (!collided && manX <= goatX + 80) {
             collided = true;
             manVelocity = 0;
 
-            // Goat says MA!
             if (!maSoundPlayed) {
                 playSound("ma.wav");
                 maSoundPlayed = true;
             }
         }
 
-        // 3rd Law: Reaction after "ma"
         if (collided && !reacted && goatX >= reactionTriggerX) {
             reacted = true;
         }
-
-        // Kick reaction: Man flies
         if (reacted) {
             manX += 5;
             manY -= 6;
