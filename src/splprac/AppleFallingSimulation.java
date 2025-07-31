@@ -17,7 +17,7 @@ public class AppleFallingSimulation extends JPanel implements ActionListener {
     private Timer timer;
     private Image treeImage, appleImage;
     private JLabel velocityLabel;
-    private boolean soundPlayed = false; // ✅ Added to control sound during fall
+    private boolean soundPlayed = false; 
 
     public AppleFallingSimulation(double initialVelocity, JLabel velocityLabel) {
         appleY = 100;
@@ -46,13 +46,13 @@ public class AppleFallingSimulation extends JPanel implements ActionListener {
         velocityY += GRAVITY;
         appleY += velocityY;
 
-        // ✅ Play sound while apple is falling down
+        
         if (appleY < 400 && !soundPlayed) {
             playSound("apple.wav");
             soundPlayed = true;
         }
 
-        // ✅ When it hits the ground, reverse velocity and reset sound flag
+      
         if (appleY >= 400) {
             appleY = 400;
             velocityY = -velocityY * BOUNCE_FACTOR;
