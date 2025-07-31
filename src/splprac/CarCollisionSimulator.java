@@ -38,18 +38,17 @@ public class CarCollisionSimulator extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Sky background
+      
         g.setColor(new Color(135, 206, 250));
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        // Draw trees in the background
+     
         Image treeImage = new ImageIcon(getClass().getResource("/splprac/roadtree.png")).getImage();
         int treeY = ROAD_Y - 150; // position trees above the road
         for (int x = 50; x < getWidth(); x += 300) {
             g.drawImage(treeImage, x, treeY, 100, 150, this);
         }
 
-        // Road and markings
         g.setColor(new Color(50, 50, 50));
         g.fillRect(0, ROAD_Y, getWidth(), 200);
         g.setColor(Color.YELLOW);
@@ -60,7 +59,6 @@ public class CarCollisionSimulator extends JPanel implements ActionListener {
             g.fillRect(i, ROAD_Y + 95, 30, 5);
         }
 
-        // Draw cars
         g.drawImage(car1Image, (int) car1X, ROAD_Y + 75, CAR_WIDTH, CAR_HEIGHT, this);
         g.drawImage(car2Image, (int) car2X, ROAD_Y + 75, CAR_WIDTH, CAR_HEIGHT, this);
     }
