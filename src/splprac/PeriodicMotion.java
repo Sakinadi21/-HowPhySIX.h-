@@ -9,13 +9,13 @@ import java.awt.event.*;
 import java.net.URL;
 
 public class PeriodicMotion extends JPanel implements ActionListener {
-    private final int BALL_SIZE = 60;  // Adjust to your image size
+    private final int BALL_SIZE = 60; 
     private final int CENTER_Y = 250;
     private final int PANEL_WIDTH = 800;
     private final int PANEL_HEIGHT = 500;
 
-    private double amplitude; // max displacement from center
-    private double frequency; // oscillations per second
+    private double amplitude; 
+    private double frequency; 
 
     private double time = 0;
     private Timer timer;
@@ -25,10 +25,10 @@ public class PeriodicMotion extends JPanel implements ActionListener {
         this.amplitude = amplitude;
         this.frequency = frequency;
 
-        // Load the bob image - update path to your image location
+        
         bobImage = new ImageIcon(getClass().getResource("/splprac/gl.png")).getImage();
 
-        timer = new Timer(20, this); // 50 FPS
+        timer = new Timer(20, this); 
         timer.start();
     }
 
@@ -36,18 +36,15 @@ public class PeriodicMotion extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // background
+        
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, PANEL_WIDTH, PANEL_HEIGHT);
 
-        // draw center line
+     
         g.setColor(Color.LIGHT_GRAY);
         g.drawLine(0, CENTER_Y, PANEL_WIDTH, CENTER_Y);
 
-        // calculate x position using SHM formula: x = A * cos(2πft)
         double x = PANEL_WIDTH / 2 + amplitude * Math.cos(2 * Math.PI * frequency * time);
-
-        // draw the bob image centered at (x, CENTER_Y)
         g.drawImage(bobImage, (int) x - BALL_SIZE / 2, CENTER_Y - BALL_SIZE / 2, BALL_SIZE, BALL_SIZE, this);
     }
 
@@ -57,7 +54,7 @@ public class PeriodicMotion extends JPanel implements ActionListener {
             playSound("periodic.wav");
             soundPlayed=true;
         }
-        time += 0.02; // increment time in seconds (matches Timer delay / 1000)
+        time += 0.02;
         repaint();
     }
     public void playSound(String fileName) {
